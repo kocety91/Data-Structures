@@ -1,4 +1,5 @@
 ﻿using Problem01.List;
+using Problem03.Queue;
 using System;
 
 namespace TestSolution
@@ -7,21 +8,13 @@ namespace TestSolution
     {
         static void Main(string[] args)
         {
-            var kocelist = new List<string>();
+            var kocelist = new Queue<string>();
 
-            kocelist.Add("K");
-            kocelist.Add("M");
-            kocelist.Add("N");
-            kocelist.Add("A");
+            kocelist.Enqueue("Koce");
+            kocelist.Enqueue("Misho");
+            kocelist.Enqueue("Neli");
+            kocelist.Enqueue("Anton");
 
-
-            kocelist.RemoveAt(1);
-
-
-            foreach (var item in kocelist)
-            {
-                Console.WriteLine(item);
-            }
         }
     }
 }
