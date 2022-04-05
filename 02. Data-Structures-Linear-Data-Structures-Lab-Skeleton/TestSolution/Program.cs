@@ -1,5 +1,6 @@
 ﻿using Problem01.List;
 using Problem03.Queue;
+using Problem04.SinglyLinkedList;
 using System;
 
 namespace TestSolution
@@ -8,12 +9,14 @@ namespace TestSolution
     {
         static void Main(string[] args)
         {
-            var kocelist = new Queue<string>();
+            var kocelist = new SinglyLinkedList<string>();
 
-            kocelist.Enqueue("Koce");
-            kocelist.Enqueue("Misho");
-            kocelist.Enqueue("Neli");
-            kocelist.Enqueue("Anton");
+            kocelist.AddFirst("Koce");
+            kocelist.AddLast("Misho");
+            kocelist.AddLast("Neli");
+            kocelist.AddLast("Anton");
+
+            kocelist.GetLast();
 
         }
     }
