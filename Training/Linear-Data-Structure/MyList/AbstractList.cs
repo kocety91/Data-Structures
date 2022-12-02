@@ -40,7 +40,7 @@ namespace MyList
 
             Grow();
 
-            for (int i = Count; i < index; i--)
+            for (int i = Count; i > index; i--)
             {
                 _items[i] = _items[i - 1];
             }

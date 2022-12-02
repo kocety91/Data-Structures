@@ -2,9 +2,12 @@
 
 var list = new AbstractList<string>();
 list.Add("Misho");
-Console.WriteLine(list[0]);
+list.Add("KOce");
 
-var ss = list.IndexOf("Misho");
-Console.WriteLine(ss);
+list.Insert(1, "Neli");
 
-var ff = new List<string>();
+foreach (var item in list)
+{
+    Console.WriteLine(item);
+}
+
