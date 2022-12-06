@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyQueue", "MyQueue\MyQueue.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLinkedList", "MyLinkedList\MyLinkedList.csproj", "{B54C37A0-E8FA-4833-9CAF-F697E4ACD5A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDoublyLinkedList", "MyDoublyLinkedList\MyDoublyLinkedList.csproj", "{706DF6CD-16E5-40C7-A2F7-92FD5D8412F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyDoublyLinkedList", "MyDoublyLinkedList\MyDoublyLinkedList.csproj", "{706DF6CD-16E5-40C7-A2F7-92FD5D8412F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyReversedList", "MyReversedList\MyReversedList.csproj", "{002A9626-5EFB-4403-BE04-91043A69F070}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReversedList", "MyReversedList\MyReversedList.csproj", "{002A9626-5EFB-4403-BE04-91043A69F070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequenceWithQueue", "SequenceWithQueue\SequenceWithQueue.csproj", "{D19A8778-8BEB-49CD-9F7F-61E58387FAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{002A9626-5EFB-4403-BE04-91043A69F070}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{002A9626-5EFB-4403-BE04-91043A69F070}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{002A9626-5EFB-4403-BE04-91043A69F070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19A8778-8BEB-49CD-9F7F-61E58387FAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19A8778-8BEB-49CD-9F7F-61E58387FAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19A8778-8BEB-49CD-9F7F-61E58387FAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19A8778-8BEB-49CD-9F7F-61E58387FAE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
