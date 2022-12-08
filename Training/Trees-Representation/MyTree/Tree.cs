@@ -22,6 +22,34 @@
             }
         }
 
+        public void AddChild(T parentKey, Tree<T> child)
+        {
+            var queue = new Queue<Tree<T>>();
+            var isFound = false;
+            queue.Enqueue(this);
+
+            while (queue.Count > 0)
+            {
+                var tree = queue.Dequeue();
+                if (tree._value.Equals(parentKey))
+                {
+                    tree._children.Add(child);
+                    child._parent = tree;
+                    isFound = true;
+                    break;
+                }
+
+                foreach (var item in tree._children)
+                {
+                    queue.Enqueue(item);
+                }
+            }
+            if (!isFound)
+            {
+                throw new ArgumentNullException($"No parentkey with this value:  {parentKey}");
+            }
+        }
+
         public IEnumerable<T> OrderBfs()
         {
             var queue = new Queue<Tree<T>>();

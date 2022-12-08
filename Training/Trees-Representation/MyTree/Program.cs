@@ -13,8 +13,9 @@ var tree = new Tree<string>("koce",//5
                      new Tree<string>("neli1")) //3
     );
 
+tree.AddChild("neli", new Tree<string>("neli2"));
 
-//var cc = tree.OrderBfs();
+var cc = tree.OrderBfs();
 
 //foreach (var item in cc)
 //{
@@ -22,10 +23,16 @@ var tree = new Tree<string>("koce",//5
 //    Console.WriteLine(item);
 //}
 
-var cc2 = tree.OrderDfs();
+//var cc2 = tree.OrderDfs();
 
-foreach (var item in cc2)
+//foreach (var item in cc2)
+//{
+//    //misho1 
+//    Console.WriteLine(item);
+//}
+
+
+foreach (var item in cc)
 {
-    //misho1 
     Console.WriteLine(item);
 }

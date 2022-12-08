@@ -5,5 +5,7 @@
         IEnumerable<T> OrderBfs();
 
         IEnumerable<T> OrderDfs();
+
+        void AddChild(T parentKey, Tree<T> child);
     }
 }
