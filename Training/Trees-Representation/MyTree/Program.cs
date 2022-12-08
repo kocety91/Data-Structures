@@ -14,6 +14,8 @@ var tree = new Tree<string>("koce",//5
     );
 
 tree.AddChild("neli", new Tree<string>("neli2"));
+tree.RemoveNode("koce");
+//tree.RemoveNode("misho");
 
 var cc = tree.OrderBfs();
 

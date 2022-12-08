@@ -50,6 +50,32 @@
             }
         }
 
+        public void RemoveNode(T nodeKey)
+        {
+            var queue = new Queue<Tree<T>>();
+            queue.Enqueue(this);
+
+            if (this._value.Equals(nodeKey))
+            {
+                throw new ArgumentException("Cant delete root elemet !");
+            }
+
+            while (queue.Count >0)
+            {
+                var currentTree = queue.Dequeue();
+                if (currentTree._value.Equals(nodeKey) 
+                    || currentTree._value.Equals(nodeKey) && currentTree._children.Count >0)
+                {
+                    currentTree._parent._children.Remove(currentTree);
+                }
+
+                foreach (var child in currentTree._children)
+                {
+                    queue.Enqueue(child);
+                }
+            }
+        }
+
         public IEnumerable<T> OrderBfs()
         {
             var queue = new Queue<Tree<T>>();
@@ -77,7 +103,6 @@
 
             return list;
         }
-
 
         private void Dfs(Tree<T> tree,IList<T> result)
         {
