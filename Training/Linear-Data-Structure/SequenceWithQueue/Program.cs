@@ -1,5 +1,4 @@
-﻿
-var number = int.Parse(Console.ReadLine());
+﻿var number = int.Parse(Console.ReadLine());
 var queue = new Queue<int>();
 queue.Enqueue(number);
 var sCounter = 1;
@@ -52,5 +51,3 @@ for (int i = 0; i < 50; i++)
         itteratorCounter = null;
     }
 }
-
-
