@@ -55,11 +55,8 @@
             var queue = new Queue<Tree<T>>();
             queue.Enqueue(this);
 
-            if (this._value.Equals(nodeKey))
-            {
-                throw new ArgumentException("Cant delete root elemet !");
-            }
-
+            if (this._value.Equals(nodeKey)) throw new ArgumentException("Cant delete root elemet !");
+            
             while (queue.Count >0)
             {
                 var currentTree = queue.Dequeue();
@@ -74,6 +71,30 @@
                     queue.Enqueue(child);
                 }
             }
+        }
+
+        public void Swap(T firstKey,T lastKey)
+        {
+            var trees = ReturnTrees(firstKey, lastKey);
+            if(trees.Count <= 1)  throw new ArgumentException($"Wrong keys...");
+            Tree<T> firstTree= trees[0];
+            Tree<T> secondTree = trees[1];
+
+
+            if (firstTree != null && secondTree != null)
+             {
+                 var firstParent = firstTree._parent;
+                 var secondParent = secondTree._parent;
+
+                 var indexFirstChildrenTree = firstParent._children.IndexOf(firstTree);
+                 var indexSecondChildrenTree = secondParent._children.IndexOf(secondTree);
+
+                 firstParent._children[indexFirstChildrenTree] = secondTree;
+                 secondTree._parent = firstParent;
+
+                 secondParent._children[indexSecondChildrenTree] = firstTree;
+                 firstTree._parent = secondParent;
+             }
         }
 
         public IEnumerable<T> OrderBfs()
@@ -111,6 +132,36 @@
                 Dfs(child,result);
             }
             result.Add(tree._value);
+        }
+
+        private List<Tree<T>> ReturnTrees(T firstKey, T lastKey)
+        {
+            var list = new List<Tree<T>>();
+            var queue = new Queue<Tree<T>>();
+            queue.Enqueue(this);
+
+            if (queue.Peek()._value.Equals(firstKey) || queue.Peek()._value.Equals(lastKey))
+                throw new ArgumentException("Cant swap root element !");
+
+            while (queue.Count > 0)
+            {
+                var currentTree = queue.Dequeue();
+
+                if (currentTree._value.Equals(firstKey) || currentTree._value.Equals(lastKey))
+                    list.Add(currentTree);
+
+                if (list.Count > 1)
+                {
+                    break;
+                }
+
+                foreach (var child in currentTree._children)
+                {
+                    queue.Enqueue(child);
+                }
+            }
+
+            return list;
         }
     }
 }

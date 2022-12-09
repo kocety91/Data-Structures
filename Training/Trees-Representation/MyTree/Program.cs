@@ -13,9 +13,11 @@ var tree = new Tree<string>("koce",//5
                      new Tree<string>("neli1")) //3
     );
 
-tree.AddChild("neli", new Tree<string>("neli2"));
-tree.RemoveNode("koce");
+//tree.AddChild("neli", new Tree<string>("neli2"));
+//tree.RemoveNode("koce");
 //tree.RemoveNode("misho");
+
+tree.Swap("x", "neli");
 
 var cc = tree.OrderBfs();
 
@@ -38,3 +40,8 @@ foreach (var item in cc)
 {
     Console.WriteLine(item);
 }
+
+
+//koce misho neli misho1 neli1
+
+//koce neli misho neli1 misho1

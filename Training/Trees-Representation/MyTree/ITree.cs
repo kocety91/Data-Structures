@@ -9,5 +9,7 @@
         void AddChild(T parentKey, Tree<T> child);
 
         void RemoveNode(T nodeKey);
+
+        void Swap(T firstKey,T secondKey);
     }
 }
