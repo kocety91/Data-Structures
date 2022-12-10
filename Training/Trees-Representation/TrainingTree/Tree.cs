@@ -84,13 +84,53 @@ namespace TrainingTree
             var currentDepth = 1;
             var depth = 0;
 
-            GetDeepestTreeKeyWithDfs(this,ref key, ref currentDepth, ref depth);
+            GetDeepestTreeKeyWithDfs(this, ref key, ref currentDepth, ref depth);
             return key;
         }
 
         public IEnumerable<T> GetLongestPath()
         {
-            throw new NotImplementedException();
+            var list = new List<T>();
+            var queue = new Queue<Tree<T>>();
+            int biggestChildCount = 0;
+            queue.Enqueue(this);
+
+
+            while (queue.Count > 0)
+            {
+                var currentTree = queue.Dequeue();
+                bool sameLevel = false;
+                bool sameDepth = false;
+                if (currentTree.Parent == null)
+                {
+                    list.Add(currentTree.Key);
+                }
+
+                foreach (var child in currentTree.Children)
+                {
+                    if(biggestChildCount < child.Children.Count)
+                    {
+                        biggestChildCount = child.Children.Count;
+                        sameLevel = true;
+                        list.Add(child.Key);
+                    }
+
+                    if (child.Children.Count == 0 && sameLevel == false)
+                    {
+                        list.Add(child.Key);
+                        sameDepth = true;
+                        break;
+                    }
+                    queue.Enqueue(child);
+                }
+
+                if (sameDepth)
+                {
+                    break;  
+                }
+            }
+
+            return list;
         }
 
         private void SetStringBuilder(Tree<T> tree, StringBuilder sb, ref int counter)
@@ -115,12 +155,12 @@ namespace TrainingTree
             if (tree.Children.Count == 0) list.Add(tree.Key);
         }
 
-        private void GetDeepestTreeKeyWithDfs(Tree<T> tree,ref T key, ref int currentDepth, ref int depth)
+        private void GetDeepestTreeKeyWithDfs(Tree<T> tree, ref T key, ref int currentDepth, ref int depth)
         {
             foreach (var child in tree.Children)
             {
                 currentDepth++;
-                GetDeepestTreeKeyWithDfs(child,ref key, ref currentDepth, ref depth);
+                GetDeepestTreeKeyWithDfs(child, ref key, ref currentDepth, ref depth);
             }
 
             if (currentDepth > depth)
@@ -130,5 +170,7 @@ namespace TrainingTree
             }
             currentDepth--;
         }
+
+
     }
 }
