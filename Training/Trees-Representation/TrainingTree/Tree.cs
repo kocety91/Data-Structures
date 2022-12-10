@@ -13,7 +13,7 @@ namespace TrainingTree
         }
 
         public Tree(T key, params Tree<T>[] children)
-            :this(key)
+            : this(key)
         {
             foreach (var child in children)
             {
@@ -42,13 +42,31 @@ namespace TrainingTree
         {
             var sb = new StringBuilder();
             int counter = 0;
-            SetStringBuilder(this, sb,ref counter);
+            SetStringBuilder(this, sb, ref counter);
             return sb.ToString();
         }
 
         public IEnumerable<T> GetInternalKeys()
         {
-            throw new NotImplementedException();
+            var queue = new Queue<Tree<T>>();
+            var result = new Stack<T>();
+            queue.Enqueue(this);
+
+            while (queue.Count > 0)
+            {
+                var currentTree = queue.Dequeue();
+                if (currentTree.Parent != null && currentTree.Children.Count > 0)
+                {
+                    result.Push(currentTree.Key);
+                }
+
+                foreach (var child in currentTree.Children)
+                {
+                    queue.Enqueue(child);
+                }
+            }
+
+            return result;
         }
 
         public IEnumerable<T> GetLeafKeys()
@@ -70,23 +88,23 @@ namespace TrainingTree
             throw new NotImplementedException();
         }
 
-        private void SetStringBuilder(Tree<T> tree , StringBuilder sb,ref int counter)
+        private void SetStringBuilder(Tree<T> tree, StringBuilder sb, ref int counter)
         {
-            sb.AppendLine(new string(' ',counter) + tree.Key.ToString());
+            sb.AppendLine(new string(' ', counter) + tree.Key.ToString());
 
             foreach (var child in tree.Children)
             {
                 counter += 2;
-                SetStringBuilder(child, sb,ref counter);
+                SetStringBuilder(child, sb, ref counter);
             }
             counter -= 2;
         }
 
-        private void GetLeafKeysWithDfs(Tree<T> tree,List<T> list)
+        private void GetLeafKeysWithDfs(Tree<T> tree, List<T> list)
         {
-            foreach (var child in tree.Children) 
+            foreach (var child in tree.Children)
             {
-                GetLeafKeysWithDfs(child,list);
+                GetLeafKeysWithDfs(child, list);
             }
 
             if (tree.Children.Count == 0) list.Add(tree.Key);

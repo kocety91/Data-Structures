@@ -11,7 +11,7 @@ var tree = new Tree<int>(7,
                         new Tree<int>(6))
                      );
 
-var gg = tree.GetLeafKeys();
+var gg = tree.GetInternalKeys();
 
 foreach (var item in gg)
 {
