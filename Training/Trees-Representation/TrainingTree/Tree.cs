@@ -80,7 +80,12 @@ namespace TrainingTree
 
         public T GetDeepestKey()
         {
-            throw new NotImplementedException();
+            T key = default;
+            var currentDepth = 1;
+            var depth = 0;
+
+            GetDeepestTreeKeyWithDfs(this,ref key, ref currentDepth, ref depth);
+            return key;
         }
 
         public IEnumerable<T> GetLongestPath()
@@ -108,6 +113,22 @@ namespace TrainingTree
             }
 
             if (tree.Children.Count == 0) list.Add(tree.Key);
+        }
+
+        private void GetDeepestTreeKeyWithDfs(Tree<T> tree,ref T key, ref int currentDepth, ref int depth)
+        {
+            foreach (var child in tree.Children)
+            {
+                currentDepth++;
+                GetDeepestTreeKeyWithDfs(child,ref key, ref currentDepth, ref depth);
+            }
+
+            if (currentDepth > depth)
+            {
+                depth = currentDepth;
+                key = tree.Key;
+            }
+            currentDepth--;
         }
     }
 }
