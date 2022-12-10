@@ -11,5 +11,9 @@ var tree = new Tree<int>(7,
                         new Tree<int>(6))
                      );
 
+var gg = tree.GetLeafKeys();
 
-Console.WriteLine(tree.AsString());
+foreach (var item in gg)
+{
+    Console.Write(item + " ");
+}

@@ -17,6 +17,7 @@ namespace TrainingTree
         {
             foreach (var child in children)
             {
+                child.Parent = this;
                 _children.Add(child);
             }
         }
@@ -52,7 +53,11 @@ namespace TrainingTree
 
         public IEnumerable<T> GetLeafKeys()
         {
-            throw new NotImplementedException();
+            var list = new List<T>();
+
+            GetLeafKeysWithDfs(this, list);
+
+            return list;
         }
 
         public T GetDeepestKey()
@@ -75,6 +80,16 @@ namespace TrainingTree
                 SetStringBuilder(child, sb,ref counter);
             }
             counter -= 2;
+        }
+
+        private void GetLeafKeysWithDfs(Tree<T> tree,List<T> list)
+        {
+            foreach (var child in tree.Children) 
+            {
+                GetLeafKeysWithDfs(child,list);
+            }
+
+            if (tree.Children.Count == 0) list.Add(tree.Key);
         }
     }
 }
