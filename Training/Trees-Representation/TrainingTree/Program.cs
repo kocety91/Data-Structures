@@ -1,6 +1,18 @@
 ﻿using TrainingTree;
 
-var tree = new Tree<int>(7,
+//var tree = new Tree<int>(7,
+//                     new Tree<int>(19,
+//                        new Tree<int>(1),
+//                        new Tree<int>(12),
+//                        new Tree<int>(31)),
+//                     new Tree<int>(21),
+//                     new Tree<int>(14,
+//                        new Tree<int>(23),
+//                        new Tree<int>(6))
+//                     );
+
+
+var integerTree = new IntegerTree(7,
                      new Tree<int>(19,
                         new Tree<int>(1),
                         new Tree<int>(12),
@@ -11,10 +23,21 @@ var tree = new Tree<int>(7,
                         new Tree<int>(6))
                      );
 
-//var gg = tree.GetDeepestKey();
-var gg = tree.GetLongestPath();
+var list = integerTree.GetPathsWithGivenSum(27);
 
-foreach (var item in gg)
+foreach (var stack in list)
 {
-    Console.WriteLine($"{item }");
+    foreach (var num in stack)
+    {
+        Console.Write(num + " ");
+    }
+    Console.WriteLine();
 }
+
+//var gg = tree.GetDeepestKey();
+//var gg = tree.GetLongestPath();
+
+//foreach (var item in gg)
+//{
+//    Console.WriteLine($"{item }");
+//}
