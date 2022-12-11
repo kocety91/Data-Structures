@@ -19,12 +19,15 @@
 
         public IEnumerable<Tree<int>> GetSubtreesWithGivenSum(int sum)
         {
-            throw new NotImplementedException();
+            var treeList = new List<Tree<int>>();
+            var list = new List<Tree<int>>();
+            GetSubtreesWithGivenSumDfs(this, list, treeList, sum);
+            return list;
         }
 
-        private void GetPathsWithDfs(Tree<int> tree,List<Stack<int>> list)
+        private void GetPathsWithDfs(Tree<int> tree, List<Stack<int>> list)
         {
-            foreach (var child in tree.Children) 
+            foreach (var child in tree.Children)
             {
                 GetPathsWithDfs(child, list);
             }
@@ -38,6 +41,26 @@
 
             currentStack.Push(tree.Key);
             list.Add(currentStack);
+        }
+
+        private void GetSubtreesWithGivenSumDfs(Tree<int> tree, List<Tree<int>> list, List<Tree<int>> treeList, int sum)
+        {
+            foreach (var child in tree.Children)
+            {
+                if (tree.Parent == null) treeList.Clear();
+
+                treeList.Add(child);
+
+                if (treeList.Sum(x => x.Key) == sum)
+                {
+                    list.AddRange(treeList);
+                    return;
+                }
+
+                GetSubtreesWithGivenSumDfs(child,list, treeList, sum) ;
+
+                if (treeList.Sum(x => x.Key) == sum) return;
+            }
         }
     }
 }

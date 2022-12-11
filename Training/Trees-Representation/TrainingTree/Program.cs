@@ -23,16 +23,20 @@ var integerTree = new IntegerTree(7,
                         new Tree<int>(6))
                      );
 
-var list = integerTree.GetPathsWithGivenSum(27);
-
-foreach (var stack in list)
+var list = integerTree.GetSubtreesWithGivenSum(20);
+foreach (var item in list)
 {
-    foreach (var num in stack)
-    {
-        Console.Write(num + " ");
-    }
-    Console.WriteLine();
+    Console.Write(item.Key + " ");
 }
+
+//foreach (var stack in list)
+//{
+//    foreach (var num in stack)
+//    {
+//        Console.Write(num + " ");
+//    }
+//    Console.WriteLine();
+//}
 
 //var gg = tree.GetDeepestKey();
 //var gg = tree.GetLongestPath();
