@@ -24,11 +24,11 @@
         {
             var list = new List<IAbstractBinaryTree<T>>();
            
-            if (this.Left != null) list.AddRange(this.Left.PreOrder());
+            if (this.Left != null) list.AddRange(this.Left.InOrder());
 
             list.Add(this);
 
-            if (this.Right != null) list.AddRange(this.Right.PreOrder());
+            if (this.Right != null) list.AddRange(this.Right.InOrder());
 
             return list;
         }
