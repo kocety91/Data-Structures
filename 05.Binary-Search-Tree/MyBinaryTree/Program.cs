@@ -20,7 +20,9 @@ var binaryTree = new AbstractBinaryTree<int>(7,
 
 //var testTree = binaryTree.PreOrder();
 
-var testTree = binaryTree.InOrder();
+//var testTree = binaryTree.InOrder();
+
+var testTree = binaryTree.PostOrder();
 
 foreach (var item in testTree)
 {
