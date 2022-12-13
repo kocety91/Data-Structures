@@ -22,7 +22,15 @@
 
         public IEnumerable<IAbstractBinaryTree<T>> InOrder()
         {
-            throw new NotImplementedException();
+            var list = new List<IAbstractBinaryTree<T>>();
+           
+            if (this.Left != null) list.AddRange(this.Left.PreOrder());
+
+            list.Add(this);
+
+            if (this.Right != null) list.AddRange(this.Right.PreOrder());
+
+            return list;
         }
 
         public IEnumerable<IAbstractBinaryTree<T>> PostOrder()

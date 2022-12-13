@@ -18,4 +18,11 @@ var binaryTree = new AbstractBinaryTree<int>(7,
 
 
 
-var gg = binaryTree.PreOrder();
+//var testTree = binaryTree.PreOrder();
+
+var testTree = binaryTree.InOrder();
+
+foreach (var item in testTree)
+{
+    Console.Write(item.Value + " ");
+}
