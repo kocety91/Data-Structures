@@ -20,6 +20,15 @@
 
         public T Value { get ; private set; }
 
+        public void ForEachInOrder(Action<T> action)
+        {
+           if(this.Left != null)  this.Left.ForEachInOrder(action);
+
+            action.Invoke(this.Value);
+
+           if(this.Right != null) this.Right.ForEachInOrder(action);
+        }
+
         public IEnumerable<IAbstractBinaryTree<T>> InOrder()
         {
             var list = new List<IAbstractBinaryTree<T>>();

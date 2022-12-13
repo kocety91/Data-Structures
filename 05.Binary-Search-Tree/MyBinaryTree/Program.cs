@@ -1,5 +1,4 @@
-﻿
-using MyBinaryTree;
+﻿using MyBinaryTree;
 
 var binaryTree = new AbstractBinaryTree<int>(7,
                        new AbstractBinaryTree<int>(4,
@@ -22,9 +21,11 @@ var binaryTree = new AbstractBinaryTree<int>(7,
 
 //var testTree = binaryTree.InOrder();
 
-var testTree = binaryTree.PostOrder();
+//var testTree = binaryTree.PostOrder();
 
-foreach (var item in testTree)
-{
-    Console.Write(item.Value + " ");
-}
+//foreach (var item in testTree)
+//{
+//    Console.Write(item.Value + " ");
+//}
+
+binaryTree.ForEachInOrder(Console.Write);

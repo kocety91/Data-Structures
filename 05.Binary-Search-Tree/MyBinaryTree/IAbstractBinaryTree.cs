@@ -9,10 +9,13 @@
 
         public T Value { get;}
 
+        void ForEachInOrder(Action<T> action);
+
         IEnumerable<IAbstractBinaryTree<T>> PreOrder();
 
         IEnumerable<IAbstractBinaryTree<T>> InOrder();
 
         IEnumerable<IAbstractBinaryTree<T>> PostOrder();
+
     }
 }
