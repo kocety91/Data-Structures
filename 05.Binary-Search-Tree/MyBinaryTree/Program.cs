@@ -28,4 +28,7 @@ var binaryTree = new AbstractBinaryTree<int>(7,
 //    Console.Write(item.Value + " ");
 //}
 
-binaryTree.ForEachInOrder(Console.Write);
+//binaryTree.ForEachInOrder(Console.Write);
+
+var result = binaryTree.AsIndentedPreOrder(0);
+Console.WriteLine(result);
