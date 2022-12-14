@@ -33,9 +33,29 @@
             EachInOrderDfs(_root, action);
         }
 
+
         public void Insert(T item)
         {
             _root = SetInsertPreOrder(_root, item);
+        }
+
+        public void DeleteMin()
+        {
+            if (_root == null) throw new InvalidOperationException();
+
+            var node = _root;
+
+            while (node.Left.Left != null)
+            {
+                node = node.Left;
+            }
+
+            node.Left = null;
+        }
+
+        public void DeleteMax()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -91,7 +111,7 @@
 
         private void PreOrderCopy(Node node)
         {
-            if(node is null) return;
+            if (node is null) return;
 
             Insert(node.Value);
             PreOrderCopy(node.Left);

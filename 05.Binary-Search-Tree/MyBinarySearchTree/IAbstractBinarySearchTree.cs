@@ -10,5 +10,9 @@
         IAbstractBinarySearchTree<T> Search(T item);
 
         bool Contains(T item);
+
+        void DeleteMin();
+
+        void DeleteMax();
     }
 }
