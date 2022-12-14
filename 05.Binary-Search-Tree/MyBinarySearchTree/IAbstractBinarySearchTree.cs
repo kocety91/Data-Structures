@@ -8,5 +8,7 @@
         void Insert(T item);
 
         IAbstractBinarySearchTree<T> Search(T item);
+
+        bool Contains(T item);
     }
 }

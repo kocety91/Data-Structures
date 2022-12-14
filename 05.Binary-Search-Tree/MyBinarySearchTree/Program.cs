@@ -11,6 +11,6 @@ bst.Insert(2);
 bst.Insert(17);
 
 //var search = bst.Search(2);
-var exist = bst.Contains(2022132);
+var exist = bst.Contains(5);
 
 Console.WriteLine(exist);

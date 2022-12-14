@@ -47,6 +47,10 @@
 
             return tree;
         }
+        public bool Contains(T item)
+        {
+            return Search(item) == null ? false : true;
+        }
 
         private void EachInOrderDfs(Node node, Action<T> action)
         {
