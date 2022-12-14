@@ -4,5 +4,7 @@
         where T : IComparable<T>
     {
         void EachInOrder(Action<T> action);
+
+        void Insert(T item);
     }
 }

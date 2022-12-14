@@ -24,6 +24,11 @@
             EachInOrderDfs(_root, action);
         }
 
+        public void Insert(T item)
+        {
+            _root = SetInsertPreOrder(_root, item);
+        }
+
         private void EachInOrderDfs(Node node, Action<T> action)
         {
             if (node == null) return;
@@ -31,6 +36,22 @@
             EachInOrderDfs(node.Left, action);
             action.Invoke(node.Value);
             EachInOrderDfs(node.Right, action);
+        }
+
+        private Node SetInsertPreOrder(Node node, T item)
+        {
+            if (node is null) node = new Node(item);
+
+            if (node.Value.CompareTo(item) > 0)
+            {
+                node.Left = SetInsertPreOrder(node.Left, item);
+            }
+            else if(node.Value.CompareTo(item) < 0)
+            {
+                node.Right = SetInsertPreOrder(node.Right, item);
+            }
+
+            return node;
         }
     }
 }
