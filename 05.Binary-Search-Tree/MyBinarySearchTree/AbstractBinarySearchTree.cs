@@ -25,7 +25,7 @@
 
         private AbstractBinarySearchTree(Node node)
         {
-            _root = node;
+            PreOrderCopy(node);
         }
 
         public void EachInOrder(Action<T> action)
@@ -47,6 +47,7 @@
 
             return tree;
         }
+
         public bool Contains(T item)
         {
             return Search(item) == null ? false : true;
@@ -86,6 +87,15 @@
             if (node.Value.CompareTo(item) < 0) node = GetSearchedNode(node.Right, item);
 
             return node;
+        }
+
+        private void PreOrderCopy(Node node)
+        {
+            if(node is null) return;
+
+            Insert(node.Value);
+            PreOrderCopy(node.Left);
+            PreOrderCopy(node.Right);
         }
     }
 }

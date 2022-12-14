@@ -10,7 +10,10 @@ bst.Insert(3);
 bst.Insert(2);
 bst.Insert(17);
 
-//var search = bst.Search(2);
+
+var newBst = bst.Search(20);  //2 17
+
+
 var exist = bst.Contains(5);
 
 Console.WriteLine(exist);
