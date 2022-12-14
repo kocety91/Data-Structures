@@ -6,5 +6,7 @@
         void EachInOrder(Action<T> action);
 
         void Insert(T item);
+
+        IAbstractBinarySearchTree<T> Search(T item);
     }
 }

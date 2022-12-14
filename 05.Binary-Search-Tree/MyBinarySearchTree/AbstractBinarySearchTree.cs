@@ -19,6 +19,15 @@
 
         private Node _root;
 
+        public AbstractBinarySearchTree()
+        {
+        }
+
+        private AbstractBinarySearchTree(Node node)
+        {
+            _root = node;
+        }
+
         public void EachInOrder(Action<T> action)
         {
             EachInOrderDfs(_root, action);
@@ -27,6 +36,16 @@
         public void Insert(T item)
         {
             _root = SetInsertPreOrder(_root, item);
+        }
+
+
+        public IAbstractBinarySearchTree<T> Search(T item)
+        {
+            var node = GetSearchedNode(_root, item);
+            if (node == null) return null;
+            var tree = new AbstractBinarySearchTree<T>(node);
+
+            return tree;
         }
 
         private void EachInOrderDfs(Node node, Action<T> action)
@@ -46,10 +65,21 @@
             {
                 node.Left = SetInsertPreOrder(node.Left, item);
             }
-            else if(node.Value.CompareTo(item) < 0)
+            else if (node.Value.CompareTo(item) < 0)
             {
                 node.Right = SetInsertPreOrder(node.Right, item);
             }
+
+            return node;
+        }
+
+        private Node GetSearchedNode(Node node, T item)
+        {
+            if (node is null) return null;
+            if (node.Value.Equals(item)) return node;
+
+            if (node.Value.CompareTo(item) > 0) node = GetSearchedNode(node.Left, item);
+            if (node.Value.CompareTo(item) < 0) node = GetSearchedNode(node.Right, item);
 
             return node;
         }
