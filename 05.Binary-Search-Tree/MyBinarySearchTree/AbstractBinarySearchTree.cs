@@ -55,7 +55,15 @@
 
         public void DeleteMax()
         {
-            throw new NotImplementedException();
+            if(_root == null) throw new InvalidOperationException();
+            var node = _root;
+
+            while (node.Right.Right != null)
+            {
+                node = node.Right;
+            }
+
+            node.Right = null;
         }
 
 
