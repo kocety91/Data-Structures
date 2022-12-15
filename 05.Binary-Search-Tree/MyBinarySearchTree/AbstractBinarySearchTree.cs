@@ -57,6 +57,7 @@
             }
 
             node.Left = null;
+            _count--;
         }
 
         public void DeleteMax()
@@ -70,11 +71,13 @@
             }
 
             node.Right = null;
+            _count--;
         }
 
         public void Delete(T item)
         {
             _root = DeleteSearchedNode(_root, item);
+            _count--;
         }
 
         public IAbstractBinarySearchTree<T> Search(T item)
@@ -138,7 +141,7 @@
 
         private Node DeleteSearchedNode(Node node, T item)
         {
-            if (node == null) throw new InvalidOperationException();
+            if (node == null || item == null) throw new InvalidOperationException();
 
             if (node.Value.Equals(item))
             {
