@@ -18,5 +18,7 @@
         void Delete(T item);
 
         int Counter();
+
+        int Rank(T item);
     }
 }

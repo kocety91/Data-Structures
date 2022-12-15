@@ -94,6 +94,12 @@
             return Search(item) == null ? false : true;
         }
 
+        public int Rank(T item)
+        {
+            var count = 0;
+            return GetLowerItems(_root, item,count);
+        }
+
         private void EachInOrderDfs(Node node, Action<T> action)
         {
             if (node == null) return;
@@ -153,6 +159,23 @@
             if (node.Value.CompareTo(item) < 0) node.Right = DeleteSearchedNode(node.Right, item);
 
             return node;
+        }
+
+        private int GetLowerItems(Node node, T item, int count)
+        {
+            if (node == null || item == null) throw new InvalidOperationException();
+            
+            if (node.Value.CompareTo(item) < 0) count++;
+            if (node.Left != null)
+            {
+                count = GetLowerItems(node.Left, item,count);
+            }
+                                         
+            if(node.Right != null && node.Right.Value.CompareTo(item) > 0)
+            {
+                count = GetLowerItems(node.Right, item, count);
+            }
+            return count;
         }
     }
 }
