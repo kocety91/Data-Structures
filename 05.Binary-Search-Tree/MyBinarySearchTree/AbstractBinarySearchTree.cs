@@ -19,9 +19,13 @@
 
         private Node _root;
 
+        private int _count;
+
         public AbstractBinarySearchTree()
         {
         }
+
+        public int Count => _count;
 
         private AbstractBinarySearchTree(Node node)
         {
@@ -31,6 +35,12 @@
         public void EachInOrder(Action<T> action)
         {
             EachInOrderDfs(_root, action);
+        }
+
+        public int Counter()
+        {
+            CountResult(_root);
+            return _count;
         }
 
         public void Insert(T item)
@@ -54,7 +64,7 @@
 
         public void DeleteMax()
         {
-            if(_root == null) throw new InvalidOperationException();
+            if (_root == null) throw new InvalidOperationException();
             var node = _root;
 
             while (node.Right.Right != null)
@@ -67,7 +77,7 @@
 
         public void Delete(T item)
         {
-           _root = DeleteSearchedNode(_root, item);
+            _root = DeleteSearchedNode(_root, item);
         }
 
         public IAbstractBinarySearchTree<T> Search(T item)
@@ -138,12 +148,20 @@
                 node = null;
                 return node;
             }
-           
-            if(node.Value.CompareTo(item) > 0) node.Left = DeleteSearchedNode(node.Left, item);
+
+            if (node.Value.CompareTo(item) > 0) node.Left = DeleteSearchedNode(node.Left, item);
             if (node.Value.CompareTo(item) < 0) node.Right = DeleteSearchedNode(node.Right, item);
 
             return node;
         }
 
+
+        private void CountResult(Node node)
+        {
+            if (node == null) return;
+            _count++;
+            if(node.Left != null) CountResult(node.Left);
+            if(node.Right != null)CountResult(node.Right);
+        }
     }
 }

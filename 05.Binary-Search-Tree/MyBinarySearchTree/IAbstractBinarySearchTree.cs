@@ -16,5 +16,7 @@
         void DeleteMax();
 
         void Delete(T item);
+
+        int Counter();
     }
 }
