@@ -10,7 +10,7 @@ bst.Insert(2);
 bst.Insert(17);
 //bst.Delete(122);
 //bst.DeleteMin();
-//bst.DeleteMax();
+bst.DeleteMax();
 
 
 
@@ -23,5 +23,5 @@ bst.Insert(17);
 
 //var gg  = bst.Counter();
 //var exist = bst.Contains(5);
-var rank = bst.Rank(17);
-Console.WriteLine(rank);
+//var rank = bst.Rank(17);
+//Console.WriteLine(rank);

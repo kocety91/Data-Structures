@@ -47,30 +47,13 @@
 
         public void DeleteMin()
         {
-            if (_root == null) throw new InvalidOperationException();
-
-            var node = _root;
-
-            while (node.Left.Left != null)
-            {
-                node = node.Left;
-            }
-
-            node.Left = null;
+           _root = DeleteMinNode(_root);
             _count--;
         }
 
         public void DeleteMax()
         {
-            if (_root == null) throw new InvalidOperationException();
-            var node = _root;
-
-            while (node.Right.Right != null)
-            {
-                node = node.Right;
-            }
-
-            node.Right = null;
+            _root = DeleteMaxNode(_root);
             _count--;
         }
 
@@ -97,7 +80,7 @@
         public int Rank(T item)
         {
             var count = 0;
-            return GetLowerItems(_root, item,count);
+            return GetLowerItems(_root, item, count);
         }
 
         private void EachInOrderDfs(Node node, Action<T> action)
@@ -168,12 +151,29 @@
             if (node.Value.CompareTo(item) < 0) count++;
 
             if (node.Left != null)
-                count = GetLowerItems(node.Left, item,count);
+                count = GetLowerItems(node.Left, item, count);
 
-            if ( node.Right != null)
+            if (node.Right != null)
                 count = GetLowerItems(node.Right, item, count);
-           
+
             return count;
+        }
+
+        private Node DeleteMinNode(Node node)
+        {
+            if (node.Left == null) return node.Right;
+
+            node.Left = DeleteMinNode(node.Left);
+
+            return node;
+        }
+
+        private Node DeleteMaxNode(Node node)
+        {
+            if (node.Right == null) return node.Left;
+
+            node.Right = DeleteMaxNode(node.Right);
+            return node;
         }
     }
 }
