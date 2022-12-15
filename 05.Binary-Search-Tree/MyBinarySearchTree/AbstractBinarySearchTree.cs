@@ -37,15 +37,12 @@
             EachInOrderDfs(_root, action);
         }
 
-        public int Counter()
-        {
-            CountResult(_root);
-            return _count;
-        }
+        public int Counter() => Count;
 
         public void Insert(T item)
         {
             _root = SetInsertPreOrder(_root, item);
+            _count++;
         }
 
         public void DeleteMin()
@@ -153,15 +150,6 @@
             if (node.Value.CompareTo(item) < 0) node.Right = DeleteSearchedNode(node.Right, item);
 
             return node;
-        }
-
-
-        private void CountResult(Node node)
-        {
-            if (node == null) return;
-            _count++;
-            if(node.Left != null) CountResult(node.Left);
-            if(node.Right != null)CountResult(node.Right);
         }
     }
 }
