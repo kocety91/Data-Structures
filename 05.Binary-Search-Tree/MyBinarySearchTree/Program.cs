@@ -4,8 +4,8 @@ using MyBinarySearchTree;
 var bst = new AbstractBinarySearchTree<int>();
 
 bst.Insert(5);
-bst.Insert(4);
-bst.Insert(3);
+bst.Insert(10);
+bst.Insert(12);
 bst.Insert(2);
 bst.Insert(17);
 //bst.Delete(122);

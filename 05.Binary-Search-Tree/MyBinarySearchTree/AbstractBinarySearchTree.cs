@@ -164,17 +164,15 @@
         private int GetLowerItems(Node node, T item, int count)
         {
             if (node == null || item == null) throw new InvalidOperationException();
-            
+
             if (node.Value.CompareTo(item) < 0) count++;
+
             if (node.Left != null)
-            {
                 count = GetLowerItems(node.Left, item,count);
-            }
-                                         
-            if(node.Right != null && node.Right.Value.CompareTo(item) > 0)
-            {
+
+            if ( node.Right != null)
                 count = GetLowerItems(node.Right, item, count);
-            }
+           
             return count;
         }
     }
