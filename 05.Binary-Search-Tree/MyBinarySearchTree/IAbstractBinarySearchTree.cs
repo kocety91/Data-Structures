@@ -14,5 +14,7 @@
         void DeleteMin();
 
         void DeleteMax();
+
+        void Delete(T item);
     }
 }

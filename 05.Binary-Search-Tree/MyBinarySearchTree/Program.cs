@@ -14,7 +14,8 @@ bst.Insert(25);
 //var newBst = bst.Search(20);  //2 17
 
 //bst.DeleteMin();
-bst.DeleteMax();
+//bst.DeleteMax();
+bst.Delete(17);
 
 var exist = bst.Contains(5);
 
