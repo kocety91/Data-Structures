@@ -93,8 +93,8 @@
 
         public T Floor(T item)
         {
-            var nodeValue = FindFloor(_root, item);
-            return nodeValue;
+            var node = FindFloor(_root, item);
+            return node.Value;
         }
 
         private void EachInOrderDfs(Node node, Action<T> action)
@@ -199,12 +199,15 @@
             if (node.Right != null) Range(node.Right, firstItem, secondItem, list);
         }
 
-        private T FindFloor(Node node, T value) 
+        private Node FindFloor(Node node, T value) 
         {
-            if (node.Left == null)  
+            if (value.CompareTo(node.Value) > 0) return node;
 
+            if (node.Left != null) node = FindFloor(node.Left, value);
+
+            if (node.Right != null) node = FindFloor(node.Right, value);
+
+            return node;
         }
-
-        
     }
 }
