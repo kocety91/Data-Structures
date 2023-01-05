@@ -11,6 +11,7 @@ bst.Insert(17);
 //bst.Delete(122);
 //bst.DeleteMin();
 bst.DeleteMax();
+bst.Range(2,10);
 
 
 

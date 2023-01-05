@@ -47,7 +47,7 @@
 
         public void DeleteMin()
         {
-           _root = DeleteMinNode(_root);
+            _root = DeleteMinNode(_root);
             _count--;
         }
 
@@ -72,6 +72,14 @@
             return tree;
         }
 
+        public IEnumerable<T> Range(T firstItem, T secondItem)
+        {
+            var list = new List<T>();
+
+            Range(_root, firstItem, secondItem, list);
+            return list;
+        }
+
         public bool Contains(T item)
         {
             return Search(item) == null ? false : true;
@@ -81,6 +89,12 @@
         {
             var count = 0;
             return GetLowerItems(_root, item, count);
+        }
+
+        public T Floor(T item)
+        {
+            var nodeValue = FindFloor(_root, item);
+            return nodeValue;
         }
 
         private void EachInOrderDfs(Node node, Action<T> action)
@@ -175,5 +189,22 @@
             node.Right = DeleteMaxNode(node.Right);
             return node;
         }
+
+        private void Range(Node node, T firstItem, T secondItem, List<T> list)
+        {
+            if (node.Left != null) Range(node.Left, firstItem, secondItem, list);
+
+            if (node.Value.CompareTo(firstItem) >= 0 && node.Value.CompareTo(secondItem) <= 0) list.Add(node.Value);
+
+            if (node.Right != null) Range(node.Right, firstItem, secondItem, list);
+        }
+
+        private T FindFloor(Node node, T value) 
+        {
+            if (node.Left == null)  
+
+        }
+
+        
     }
 }

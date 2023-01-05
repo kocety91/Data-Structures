@@ -9,6 +9,8 @@
 
         IAbstractBinarySearchTree<T> Search(T item);
 
+        IEnumerable<T> Range(T firstItem, T secondItem);
+
         bool Contains(T item);
 
         void DeleteMin();
@@ -21,6 +23,6 @@
 
         int Rank(T item);
 
-
+        T Floor(T item);
     }
 }
